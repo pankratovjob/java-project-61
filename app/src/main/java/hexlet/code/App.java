@@ -10,16 +10,9 @@ class App {
         for (var game: games) {
             System.out.println(game);
         }
-        Scanner console = new Scanner(System.in);
-        int playerChoose = console.nextInt();
+        int playerChoose = Engine.askPlayerIntChoose();
         System.out.println("Your choice: " + playerChoose);
+        Engine.start(playerChoose);
 
-        if (playerChoose == 1) {
-            Engine.askName();
-        } else if (playerChoose == 2) {
-            Even.startGame();
-        } else if (playerChoose == 3) {
-            Calc.startGame();
-        }
     }
 }
