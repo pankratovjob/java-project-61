@@ -11,4 +11,8 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pankratovjob_java-project-61&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pankratovjob_java-project-61)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pankratovjob_java-project-61&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pankratovjob_java-project-61)
 
+Even - game
 [![asciicast](https://asciinema.org/a/yjZXpepS401XBIpWRrPOlNnlf.svg)](https://asciinema.org/a/yjZXpepS401XBIpWRrPOlNnlf)
+
+Calc - game
+[![asciicast](https://asciinema.org/a/xH8XMDBovEWD1HjSyUQp7kE1T.svg)](https://asciinema.org/a/xH8XMDBovEWD1HjSyUQp7kE1T)
