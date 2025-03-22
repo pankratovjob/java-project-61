@@ -19,3 +19,6 @@ Calc - game
 
 NOD - game
 [![asciicast](https://asciinema.org/a/hdDbU629sFMqrbwzPned1Iqzu.svg)](https://asciinema.org/a/hdDbU629sFMqrbwzPned1Iqzu)
+
+Progression - game
+[![asciicast](https://asciinema.org/a/Y9LD7JaiwJOUuuXd9ZRRdKMvq.svg)](https://asciinema.org/a/Y9LD7JaiwJOUuuXd9ZRRdKMvq)
