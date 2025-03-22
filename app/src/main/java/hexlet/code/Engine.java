@@ -4,6 +4,7 @@ import java.util.Scanner;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 import hexlet.code.games.NOD;
+import hexlet.code.games.Progression;
 public class Engine {
     public static int askPlayerIntChoose() {
         Scanner console = new Scanner(System.in);
@@ -26,6 +27,8 @@ public class Engine {
             Calc.startGame(askName());
         } else if (playerChoose == 4) {
             NOD.startGame(askName());
+        } else if (playerChoose == 5) {
+            Progression.startGame(askName());
         }
     }
     public static String askName() {
