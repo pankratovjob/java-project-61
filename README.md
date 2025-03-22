@@ -16,3 +16,6 @@ Even - game
 
 Calc - game
 [![asciicast](https://asciinema.org/a/xH8XMDBovEWD1HjSyUQp7kE1T.svg)](https://asciinema.org/a/xH8XMDBovEWD1HjSyUQp7kE1T)
+
+NOD - game
+[![asciicast](https://asciinema.org/a/hdDbU629sFMqrbwzPned1Iqzu.svg)](https://asciinema.org/a/hdDbU629sFMqrbwzPned1Iqzu)
