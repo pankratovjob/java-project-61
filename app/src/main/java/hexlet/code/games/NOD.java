@@ -1,33 +1,20 @@
 package hexlet.code.games;
 
-//import java.util.Scanner;
-import java.util.Random;
 import hexlet.code.Engine;
-public class Calc {
+import java.util.Random;
+public class NOD {
     public static void startGame(String name) {
-        String questionText = "What is the result of the expression?";
-        char[] arrChar = {'+', '-', '*'};
+        String questionText = "Find the greatest common divisor of given numbers.";
         int correct = 0;
-        int rightAnswer = 0;
         Random randomOperand = new Random();
         boolean win = false;
-
         Engine.showQuestionText(questionText);
 
         do {
             int numOne = randomOperand.nextInt(100);
             int numTwo = randomOperand.nextInt(100);
-            char oper = arrChar[randomOperand.nextInt(3)];
-            if (oper == '-') {
-                rightAnswer = numOne - numTwo;
-            } else if (oper == '*') {
-                rightAnswer = numOne * numTwo;
-            } else if (oper == '+') {
-                rightAnswer = numOne + numTwo;
-            }
-            String primer = "" + numOne + " " + oper + " " + numTwo;
-
-            Engine.showQuestion(primer);
+            Engine.showQuestion("" + numOne + " " + numTwo);
+            int rightAnswer = getRightAnswer(numOne, numTwo);
 
             int playerAnswer = Engine.askPlayerIntChoose();
 
@@ -39,10 +26,16 @@ public class Calc {
                 correct = Engine.showResultAnswer(false, correct, playerAnswer, rightAnswer);
                 break;
             }
-
         } while (correct < 3);
 
         Engine.showResultGame(win, name);
+    }
 
+    public static int getRightAnswer(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        int temp = a % b;
+        return getRightAnswer(b, temp);
     }
 }

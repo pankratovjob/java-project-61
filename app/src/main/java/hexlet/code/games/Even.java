@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 import java.util.Random;
 import hexlet.code.Engine;
 
@@ -19,7 +19,7 @@ public class Even {
             Engine.showQuestion(randomNumber);
             String playerAnswer = Engine.askPlayerStringChoose();
 
-            if (playerAnswer.equals(rightAnswer)) {
+            if (playerAnswer == rightAnswer) {
                 win = true;
                 correct = Engine.showResultAnswer(true, correct, playerAnswer, rightAnswer);
             } else {

@@ -3,6 +3,7 @@ package hexlet.code;
 import java.util.Scanner;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
+import hexlet.code.games.NOD;
 public class Engine {
     public static int askPlayerIntChoose() {
         Scanner console = new Scanner(System.in);
@@ -23,6 +24,8 @@ public class Engine {
             Even.startGame(askName());
         } else if (playerChoose == 3) {
             Calc.startGame(askName());
+        } else if (playerChoose == 4) {
+            NOD.startGame(askName());
         }
     }
     public static String askName() {
@@ -46,23 +49,25 @@ public class Engine {
     }
 
     public static int showResultAnswer(boolean result, int correct, String playerChoose, String rightQuestion) {
-        if(result) {
+        if (result) {
             System.out.println("Correct!");
-            return correct += 1;
+            correct += 1;
         } else {
             System.out.println(playerChoose + " is wrong answer ;(. Correct answer was " + rightQuestion + ".");
-            return correct = 0;
+            correct = 0;
         }
+        return correct;
     }
 
     public static int showResultAnswer(boolean result, int correct, int playerChoose, int rightQuestion) {
-        if(result) {
+        if (result) {
             System.out.println("Correct!");
-            return correct += 1;
+            correct += 1;
         } else {
             System.out.println(playerChoose + " is wrong answer ;(. Correct answer was " + rightQuestion + ".");
-            return correct = 0;
+            correct = 0;
         }
+        return correct;
     }
 
     public static void showResultGame(boolean win, String name) {
