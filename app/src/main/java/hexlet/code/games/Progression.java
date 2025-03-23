@@ -2,7 +2,7 @@ package  hexlet.code.games;
 
 import hexlet.code.Engine;
 import java.util.Random;
-import java.util.Arrays;
+//import java.util.Arrays;
 
 public class Progression {
     public static void startGame(String namePlayer) {
@@ -27,7 +27,8 @@ public class Progression {
             String rightAnswer = String.valueOf(numbers[randomNumber]);
             numbersString[randomNumber] = "..";
 
-            String expression = Arrays.toString(numbersString);
+            //String expression = Arrays.toString(numbersString);
+            String expression = toStringArr(numbers, randomNumber);
             String playerAnswer = Engine.askPlayerStringChoose(expression);
 
             correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
@@ -35,5 +36,18 @@ public class Progression {
         } while (correctAnswerCount >= 0 && correctAnswerCount < Engine.attempt);
 
         Engine.showResultGame((correctAnswerCount >= Engine.attempt), namePlayer);
+    }
+
+    private static String toStringArr(int[] arr, int randomNumber) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < arr.length; i++) {
+            if (i == randomNumber) {
+                stringBuilder.append(".. ");
+            } else {
+                stringBuilder.append(arr[i] + " ");
+            }
+        }
+        //String joinedString = stringBuilder.toString();
+        return stringBuilder.toString();
     }
 }
