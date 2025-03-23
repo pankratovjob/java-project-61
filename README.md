@@ -22,3 +22,6 @@ NOD - game
 
 Progression - game
 [![asciicast](https://asciinema.org/a/Y9LD7JaiwJOUuuXd9ZRRdKMvq.svg)](https://asciinema.org/a/Y9LD7JaiwJOUuuXd9ZRRdKMvq)
+
+Prime - game
+[![asciicast](https://asciinema.org/a/ds3tb9wufrqzbJsik2fnClk8d.svg)](https://asciinema.org/a/ds3tb9wufrqzbJsik2fnClk8d)
