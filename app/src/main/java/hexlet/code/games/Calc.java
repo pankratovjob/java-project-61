@@ -7,9 +7,8 @@ public class Calc {
         String questionText = "What is the result of the expression?";
         char[] arrChar = {'+', '-', '*'};
         int correct = 0;
-        int rightAnswer = 0;
+        String rightAnswer = "";
         Random randomOperand = new Random();
-        boolean win = false;
 
         Engine.showQuestionText(questionText);
 
@@ -17,31 +16,24 @@ public class Calc {
             int numOne = randomOperand.nextInt(100);
             int numTwo = randomOperand.nextInt(100);
             char oper = arrChar[randomOperand.nextInt(3)];
+
             if (oper == '-') {
-                rightAnswer = numOne - numTwo;
+                rightAnswer = String.valueOf(numOne - numTwo);
             } else if (oper == '*') {
-                rightAnswer = numOne * numTwo;
+                rightAnswer = String.valueOf(numOne * numTwo);
             } else if (oper == '+') {
-                rightAnswer = numOne + numTwo;
+                rightAnswer = String.valueOf(numOne + numTwo);
             }
+
             String primer = "" + numOne + " " + oper + " " + numTwo;
 
-            Engine.showQuestion(primer);
+            String playerAnswer = String.valueOf(Engine.askPlayerIntChoose(primer));
 
-            int playerAnswer = Engine.askPlayerIntChoose();
+            correct = Engine.checkAnswer(name, playerAnswer, rightAnswer, correct);
 
-            if (playerAnswer == rightAnswer) {
-                win = true;
-                correct = Engine.showResultAnswer(true, correct, playerAnswer, rightAnswer);
-            } else {
-                win = false;
-                correct = Engine.showResultAnswer(false, correct, playerAnswer, rightAnswer);
-                break;
-            }
+        } while (correct >= 0 && correct < 3);
 
-        } while (correct < 3);
-
-        Engine.showResultGame(win, name);
+        Engine.showResultGame((correct >= 3), name);
 
     }
 }

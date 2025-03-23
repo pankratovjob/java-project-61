@@ -5,14 +5,23 @@ import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 import hexlet.code.games.NOD;
 import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 public class Engine {
-    public static int askPlayerIntChoose() {
+
+    public static int askPlayerNameChoose() {
+        Scanner console = new Scanner(System.in);
+        int playerChoose = console.nextInt();
+        return playerChoose;
+    }
+    public static int askPlayerIntChoose(String question) {
+        showQuestion(question);
         Scanner console = new Scanner(System.in);
         int playerChoose = console.nextInt();
         return playerChoose;
     }
 
-    public static String askPlayerStringChoose() {
+    public static String askPlayerStringChoose(int question) {
+        showQuestion(question);
         Scanner console = new Scanner(System.in);
         String playerChoose = console.nextLine();
         return playerChoose;
@@ -29,6 +38,10 @@ public class Engine {
             NOD.startGame(askName());
         } else if (playerChoose == 5) {
             Progression.startGame(askName());
+        } else if (playerChoose == 6) {
+            Prime.startGame(askName());
+        } esle {
+            break;
         }
     }
     public static String askName() {
@@ -51,33 +64,36 @@ public class Engine {
         System.out.println("Question: " + question);
     }
 
-    public static int showResultAnswer(boolean result, int correct, String playerChoose, String rightQuestion) {
+    public static int showResultAnswer(
+            String name,
+            boolean result,
+            int correct,
+            String playerChoose,
+            String rightQuestion
+    ) {
         if (result) {
             System.out.println("Correct!");
             correct += 1;
         } else {
             System.out.println(playerChoose + " is wrong answer ;(. Correct answer was " + rightQuestion + ".");
-            correct = 0;
+            correct = -1;
+
         }
         return correct;
     }
-
-    public static int showResultAnswer(boolean result, int correct, int playerChoose, int rightQuestion) {
-        if (result) {
-            System.out.println("Correct!");
-            correct += 1;
-        } else {
-            System.out.println(playerChoose + " is wrong answer ;(. Correct answer was " + rightQuestion + ".");
-            correct = 0;
-        }
-        return correct;
-    }
-
     public static void showResultGame(boolean win, String name) {
         if (win) {
             System.out.println("Congratulations, " + name + "!");
         } else {
             System.out.println("Let's try again, " + name + "!");
+        }
+    }
+
+    public static int checkAnswer(String name, String playerAnswer, String rightAnswer, int correct) {
+        if (playerAnswer.equals(rightAnswer)) {
+            return showResultAnswer(name, true, correct, playerAnswer, rightAnswer);
+        } else {
+            return showResultAnswer(name, false, correct, playerAnswer, rightAnswer);
         }
     }
 }

@@ -9,7 +9,6 @@ public class Progression {
         String questionText = "What number is missing in the progression?";
         int correct = 0;
         Random randomOperand = new Random();
-        boolean win = false;
         Engine.showQuestionText(questionText);
         int[] numbers = new int[10];
         String[] numbersString = new String[10];
@@ -25,22 +24,16 @@ public class Progression {
                 numbersString[i + 1] = String.valueOf(numbers[i + 1]);
             }
 
-            int rightAnswer = numbers[randomNumber];
+            String rightAnswer = String.valueOf(numbers[randomNumber]);
             numbersString[randomNumber] = "..";
 
-            Engine.showQuestion(Arrays.toString(numbersString));
-            int playerAnswer = Engine.askPlayerIntChoose();
+            String primer = Arrays.toString(numbersString);
+            String playerAnswer = String.valueOf(Engine.askPlayerIntChoose(primer));
 
-            if (playerAnswer == rightAnswer) {
-                win = true;
-                correct = Engine.showResultAnswer(true, correct, playerAnswer, rightAnswer);
-            } else {
-                win = false;
-                correct = Engine.showResultAnswer(false, correct, playerAnswer, rightAnswer);
-                break;
-            }
-        } while (correct < 3);
+            correct = Engine.checkAnswer(name, playerAnswer, rightAnswer, correct);
 
-        Engine.showResultGame(win, name);
+        } while (correct >= 0 && correct < 3);
+
+        Engine.showResultGame((correct >= 3), name);
     }
 }

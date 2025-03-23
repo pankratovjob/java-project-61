@@ -7,28 +7,21 @@ public class NOD {
         String questionText = "Find the greatest common divisor of given numbers.";
         int correct = 0;
         Random randomOperand = new Random();
-        boolean win = false;
         Engine.showQuestionText(questionText);
 
         do {
             int numOne = randomOperand.nextInt(100);
             int numTwo = randomOperand.nextInt(100);
-            Engine.showQuestion("" + numOne + " " + numTwo);
-            int rightAnswer = getRightAnswer(numOne, numTwo);
+            String primer = "" + numOne + " " + numTwo;
 
-            int playerAnswer = Engine.askPlayerIntChoose();
+            String rightAnswer = String.valueOf(getRightAnswer(numOne, numTwo));
+            String playerAnswer = String.valueOf(Engine.askPlayerIntChoose(primer));
 
-            if (playerAnswer == rightAnswer) {
-                win = true;
-                correct = Engine.showResultAnswer(true, correct, playerAnswer, rightAnswer);
-            } else {
-                win = false;
-                correct = Engine.showResultAnswer(false, correct, playerAnswer, rightAnswer);
-                break;
-            }
-        } while (correct < 3);
+            correct = Engine.checkAnswer(name, playerAnswer, rightAnswer, correct);
 
-        Engine.showResultGame(win, name);
+        } while (correct >= 0 && correct < 3);
+
+        Engine.showResultGame((correct >= 3), name);
     }
 
     public static int getRightAnswer(int a, int b) {
