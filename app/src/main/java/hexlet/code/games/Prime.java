@@ -3,9 +3,9 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import java.util.Random;
 public class Prime {
-    public static void startGame(String name) {
+    public static void startGame(String namePlayer) {
         String questionText = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        int correct = 0;
+        int correctAnswerCount = 0;
         Random randomOperand = new Random();
         Engine.showQuestionText(questionText);
         String rightAnswer = "";
@@ -13,14 +13,11 @@ public class Prime {
         do {
             int randomNumber = randomOperand.nextInt(100);
             rightAnswer = getRightAnswer(randomNumber);
+            String playerAnswer = Engine.askPlayerStringChoose(String.valueOf(randomNumber));
+            correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
+        } while (correctAnswerCount >= 0 && correctAnswerCount < Engine.attempt);
 
-            String playerAnswer = Engine.askPlayerStringChoose(randomNumber);
-            correct = Engine.checkAnswer(name, playerAnswer, rightAnswer, correct);
-
-        } while (correct >= 0 && correct < 3);
-
-        Engine.showResultGame((correct >= 3), name);
-
+        Engine.showResultGame((correctAnswerCount >= Engine.attempt), namePlayer);
     }
 
     private static String getRightAnswer(int randomNumber) {

@@ -3,11 +3,10 @@ package hexlet.code.games;
 import java.util.Random;
 import hexlet.code.Engine;
 public class Calc {
-    public static void startGame(String name) {
+    public static void startGame(String namePlayer) {
         String questionText = "What is the result of the expression?";
         char[] arrChar = {'+', '-', '*'};
-        int correct = 0;
-        String rightAnswer = "";
+        int correctAnswerCount = 0;
         Random randomOperand = new Random();
 
         Engine.showQuestionText(questionText);
@@ -17,23 +16,26 @@ public class Calc {
             int numTwo = randomOperand.nextInt(100);
             char oper = arrChar[randomOperand.nextInt(3)];
 
-            if (oper == '-') {
-                rightAnswer = String.valueOf(numOne - numTwo);
-            } else if (oper == '*') {
-                rightAnswer = String.valueOf(numOne * numTwo);
-            } else if (oper == '+') {
-                rightAnswer = String.valueOf(numOne + numTwo);
-            }
+            String rightAnswer = getRightAnswer(oper, numOne, numTwo);
+            String expression = "" + numOne + " " + oper + " " + numTwo;
+            String playerAnswer = Engine.askPlayerStringChoose(expression);
+            correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
 
-            String primer = "" + numOne + " " + oper + " " + numTwo;
+        } while (correctAnswerCount >= 0 && correctAnswerCount < Engine.attempt);
 
-            String playerAnswer = String.valueOf(Engine.askPlayerIntChoose(primer));
-
-            correct = Engine.checkAnswer(name, playerAnswer, rightAnswer, correct);
-
-        } while (correct >= 0 && correct < 3);
-
-        Engine.showResultGame((correct >= 3), name);
+        Engine.showResultGame((correctAnswerCount >= Engine.attempt), namePlayer);
 
     }
+    private static String getRightAnswer(char oper, int numOne, int numTwo) {
+        int rightAnswer = 0;
+        if (oper == '-') {
+            rightAnswer = numOne - numTwo;
+        } else if (oper == '*') {
+            rightAnswer = numOne * numTwo;
+        } else if (oper == '+') {
+            rightAnswer = numOne + numTwo;
+        }
+        return String.valueOf(rightAnswer);
+    }
+
 }

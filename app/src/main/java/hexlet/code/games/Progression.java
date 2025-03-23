@@ -5,9 +5,9 @@ import java.util.Random;
 import java.util.Arrays;
 
 public class Progression {
-    public static void startGame(String name) {
+    public static void startGame(String namePlayer) {
         String questionText = "What number is missing in the progression?";
-        int correct = 0;
+        int correctAnswerCount = 0;
         Random randomOperand = new Random();
         Engine.showQuestionText(questionText);
         int[] numbers = new int[10];
@@ -27,13 +27,13 @@ public class Progression {
             String rightAnswer = String.valueOf(numbers[randomNumber]);
             numbersString[randomNumber] = "..";
 
-            String primer = Arrays.toString(numbersString);
-            String playerAnswer = String.valueOf(Engine.askPlayerIntChoose(primer));
+            String expression = Arrays.toString(numbersString);
+            String playerAnswer = Engine.askPlayerStringChoose(expression);
 
-            correct = Engine.checkAnswer(name, playerAnswer, rightAnswer, correct);
+            correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
 
-        } while (correct >= 0 && correct < 3);
+        } while (correctAnswerCount >= 0 && correctAnswerCount < Engine.attempt);
 
-        Engine.showResultGame((correct >= 3), name);
+        Engine.showResultGame((correctAnswerCount >= Engine.attempt), namePlayer);
     }
 }

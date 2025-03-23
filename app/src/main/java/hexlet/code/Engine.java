@@ -7,93 +7,86 @@ import hexlet.code.games.NOD;
 import hexlet.code.games.Progression;
 import hexlet.code.games.Prime;
 public class Engine {
+    public static int attempt = 3;
 
-    public static int askPlayerNameChoose() {
+    public static int askPlayerChoose() {
         Scanner console = new Scanner(System.in);
         int playerChoose = console.nextInt();
-        return playerChoose;
-    }
-    public static int askPlayerIntChoose(String question) {
-        showQuestion(question);
-        Scanner console = new Scanner(System.in);
-        int playerChoose = console.nextInt();
+        System.out.println("Your choice: " + playerChoose);
         return playerChoose;
     }
 
-    public static String askPlayerStringChoose(int question) {
-        showQuestion(question);
-        Scanner console = new Scanner(System.in);
-        String playerChoose = console.nextLine();
-        return playerChoose;
-    }
     public static void start(int playerChoose) {
 
         if (playerChoose == 1) {
-            Engine.askName();
+            Engine.askNamePlayer();
         } else if (playerChoose == 2) {
-            Even.startGame(askName());
+            Even.startGame(askNamePlayer());
         } else if (playerChoose == 3) {
-            Calc.startGame(askName());
+            Calc.startGame(askNamePlayer());
         } else if (playerChoose == 4) {
-            NOD.startGame(askName());
+            NOD.startGame(askNamePlayer());
         } else if (playerChoose == 5) {
-            Progression.startGame(askName());
+            Progression.startGame(askNamePlayer());
         } else if (playerChoose == 6) {
-            Prime.startGame(askName());
-        } esle {
-            break;
+            Prime.startGame(askNamePlayer());
+        } else {
+            System.exit(0);
         }
     }
-    public static String askName() {
+    public static String askNamePlayer() {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
         Scanner console = new Scanner(System.in);
-        String name = console.nextLine();
-        System.out.println("Hello, " + name + "!");
-        return name;
+        String namePlayer = console.nextLine();
+        System.out.println("Hello, " + namePlayer + "!");
+        return namePlayer;
     }
 
     public static void showQuestionText(String questionText) {
         System.out.println(questionText);
     };
-    public static void showQuestion(int question) {
-        System.out.println("Question: " + question);
-    }
 
     public static void showQuestion(String question) {
         System.out.println("Question: " + question);
     }
 
+    public static String askPlayerStringChoose(String expression) {
+        showQuestion(expression);
+        Scanner console = new Scanner(System.in);
+        String playerChoose = console.nextLine();
+        return playerChoose;
+    }
+    public static int checkAnswer(String namePlayer, String playerAnswer, String rightAnswer, int correctAnswerCount) {
+        if (playerAnswer.equals(rightAnswer)) {
+            return showResultAnswer(namePlayer, true, correctAnswerCount, playerAnswer, rightAnswer);
+        } else {
+            return showResultAnswer(namePlayer, false, correctAnswerCount, playerAnswer, rightAnswer);
+        }
+    }
     public static int showResultAnswer(
             String name,
             boolean result,
-            int correct,
+            int correctAnswerCount,
             String playerChoose,
-            String rightQuestion
+            String rightAnswer
     ) {
         if (result) {
             System.out.println("Correct!");
-            correct += 1;
+            correctAnswerCount += 1;
         } else {
-            System.out.println(playerChoose + " is wrong answer ;(. Correct answer was " + rightQuestion + ".");
-            correct = -1;
+            System.out.println(playerChoose + " is wrong answer ;(. Correct answer was " + rightAnswer + ".");
+            correctAnswerCount = -1;
 
         }
-        return correct;
+        return correctAnswerCount;
     }
-    public static void showResultGame(boolean win, String name) {
+    public static void showResultGame(boolean win, String namePlayer) {
         if (win) {
-            System.out.println("Congratulations, " + name + "!");
+            System.out.println("Congratulations, " + namePlayer + "!");
         } else {
-            System.out.println("Let's try again, " + name + "!");
+            System.out.println("Let's try again, " + namePlayer + "!");
         }
     }
 
-    public static int checkAnswer(String name, String playerAnswer, String rightAnswer, int correct) {
-        if (playerAnswer.equals(rightAnswer)) {
-            return showResultAnswer(name, true, correct, playerAnswer, rightAnswer);
-        } else {
-            return showResultAnswer(name, false, correct, playerAnswer, rightAnswer);
-        }
-    }
 }

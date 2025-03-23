@@ -4,9 +4,9 @@ import java.util.Random;
 import hexlet.code.Engine;
 
 public class Even {
-    public static void startGame(String name) {
+    public static void startGame(String namePlayer) {
         String questionText = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        int correct = 0;
+        int correctAnswerCount = 0;
         Random random = new Random();
 
         Engine.showQuestionText(questionText);
@@ -14,12 +14,13 @@ public class Even {
         do {
             int randomNumber = random.nextInt(100);
             String rightAnswer = (randomNumber % 2 == 0) ? "yes" : "no";
-            String playerAnswer = Engine.askPlayerStringChoose(randomNumber);
-            correct = Engine.checkAnswer(name, playerAnswer, rightAnswer, correct);
+            String playerAnswer = Engine.askPlayerStringChoose(String.valueOf(randomNumber));
 
-        } while (correct >= 0 && correct < 3);
+            correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
 
-        Engine.showResultGame((correct >= 3), name);
+        } while (correctAnswerCount >= 0 && correctAnswerCount < Engine.attempt);
+
+        Engine.showResultGame((correctAnswerCount >= Engine.attempt), namePlayer);
 
     }
 }

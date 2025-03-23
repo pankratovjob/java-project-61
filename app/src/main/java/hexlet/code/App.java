@@ -15,8 +15,7 @@ class App {
         for (var game: games) {
             System.out.println(game);
         }
-        int playerChoose = Engine.askPlayerNameChoose();
-        System.out.println("Your choice: " + playerChoose);
+        int playerChoose = Engine.askPlayerChoose();
         Engine.start(playerChoose);
 
     }
