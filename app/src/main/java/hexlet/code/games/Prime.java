@@ -26,7 +26,12 @@ public class Prime {
             result = "no";
         } else {
             for (var i = 2; i <= randomNumber / 2; i++) {
-                result = (randomNumber % i == 0) ? "no" : "yes";
+                if (randomNumber % i == 0) {
+                    result = "no";
+                    return result;
+                } else {
+                    result = "yes";
+                }
             }
         }
         return result;
