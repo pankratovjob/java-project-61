@@ -8,13 +8,13 @@ public class Calc {
         char[] arrChar = {'+', '-', '*'};
         int correctAnswerCount = 0;
         Random randomOperand = new Random();
-
+        int rangeForNumber = 100;
         Engine.showQuestionText(questionText);
 
         do {
-            int numOne = randomOperand.nextInt(100);
-            int numTwo = randomOperand.nextInt(100);
-            char oper = arrChar[randomOperand.nextInt(3)];
+            int numOne = randomOperand.nextInt(rangeForNumber);
+            int numTwo = randomOperand.nextInt(rangeForNumber);
+            char oper = arrChar[randomOperand.nextInt(arrChar.length - 1)];
 
             String rightAnswer = getRightAnswer(oper, numOne, numTwo);
             String expression = "" + numOne + " " + oper + " " + numTwo;

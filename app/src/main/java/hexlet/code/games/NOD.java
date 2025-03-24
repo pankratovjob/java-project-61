@@ -8,10 +8,11 @@ public class NOD {
         int correctAnswerCount = 0;
         Random randomOperand = new Random();
         Engine.showQuestionText(questionText);
+        int rangeForNumber = 100;
 
         do {
-            int numOne = randomOperand.nextInt(100);
-            int numTwo = randomOperand.nextInt(100);
+            int numOne = randomOperand.nextInt(rangeForNumber);
+            int numTwo = randomOperand.nextInt(rangeForNumber);
 
             String expression = "" + numOne + " " + numTwo;
             String rightAnswer = getRightAnswer(numOne, numTwo);

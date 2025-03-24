@@ -8,11 +8,11 @@ public class Even {
         String questionText = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         int correctAnswerCount = 0;
         Random random = new Random();
-
+        int rangeForNumber = 100;
         Engine.showQuestionText(questionText);
 
         do {
-            int randomNumber = random.nextInt(100);
+            int randomNumber = random.nextInt(rangeForNumber);
             String rightAnswer = (randomNumber % 2 == 0) ? "yes" : "no";
             String playerAnswer = Engine.askPlayerStringChoose(String.valueOf(randomNumber));
 

@@ -9,9 +9,10 @@ public class Prime {
         Random randomOperand = new Random();
         Engine.showQuestionText(questionText);
         String rightAnswer = "";
+        int rangeForNumber = 100;
 
         do {
-            int randomNumber = randomOperand.nextInt(100);
+            int randomNumber = randomOperand.nextInt(rangeForNumber);
             rightAnswer = getRightAnswer(randomNumber);
             String playerAnswer = Engine.askPlayerStringChoose(String.valueOf(randomNumber));
             correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
