@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Progression {
     public static void startGame(String namePlayer) {
+        final int countRightAnswer = 3;
         String questionText = "What number is missing in the progression?";
         int correctAnswerCount = 0;
         Random randomOperand = new Random();
@@ -36,9 +37,9 @@ public class Progression {
 
             correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
 
-        } while (correctAnswerCount >= 0 && correctAnswerCount < Engine.attempt);
+        } while (correctAnswerCount >= 0 && correctAnswerCount < countRightAnswer);
 
-        Engine.showResultGame((correctAnswerCount >= Engine.attempt), namePlayer);
+        Engine.showResultGame((correctAnswerCount >= countRightAnswer), namePlayer);
     }
 
     private static String toStringArr(int[] arr, int randomNumber) {

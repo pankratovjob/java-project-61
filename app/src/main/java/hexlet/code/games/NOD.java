@@ -4,6 +4,7 @@ import hexlet.code.Engine;
 import java.util.Random;
 public class NOD {
     public static void startGame(String namePlayer) {
+        final int countRightAnswer = 3;
         String questionText = "Find the greatest common divisor of given numbers.";
         int correctAnswerCount = 0;
         Random randomOperand = new Random();
@@ -20,9 +21,9 @@ public class NOD {
 
             correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
 
-        } while (correctAnswerCount >= 0 && correctAnswerCount < Engine.attempt);
+        } while (correctAnswerCount >= 0 && correctAnswerCount < countRightAnswer);
 
-        Engine.showResultGame((correctAnswerCount >= Engine.attempt), namePlayer);
+        Engine.showResultGame((correctAnswerCount >= countRightAnswer), namePlayer);
     }
 
     public static String getRightAnswer(int a, int b) {

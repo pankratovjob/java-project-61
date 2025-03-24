@@ -5,6 +5,7 @@ import hexlet.code.Engine;
 
 public class Even {
     public static void startGame(String namePlayer) {
+        final int countRightAnswer = 3;
         String questionText = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         int correctAnswerCount = 0;
         Random random = new Random();
@@ -18,9 +19,9 @@ public class Even {
 
             correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
 
-        } while (correctAnswerCount >= 0 && correctAnswerCount < Engine.attempt);
+        } while (correctAnswerCount >= 0 && correctAnswerCount < countRightAnswer);
 
-        Engine.showResultGame((correctAnswerCount >= Engine.attempt), namePlayer);
+        Engine.showResultGame((correctAnswerCount >= countRightAnswer), namePlayer);
 
     }
 }

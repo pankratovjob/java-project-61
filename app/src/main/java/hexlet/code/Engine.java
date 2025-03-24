@@ -7,32 +7,33 @@ import hexlet.code.games.NOD;
 import hexlet.code.games.Progression;
 import hexlet.code.games.Prime;
 public class Engine {
-    public static int attempt = 3;
 
-    public static int askPlayerChoose() {
+    public static String askPlayerChoose() {
         Scanner console = new Scanner(System.in);
-        int playerChoose = console.nextInt();
+        String playerChoose = console.nextLine();
         System.out.println("Your choice: " + playerChoose);
         return playerChoose;
     }
 
-    public static void start(int playerChoose) {
+    public static void start(String playerChoose) {
 
-        if (playerChoose == 1) {
+        if (playerChoose.equals("1")) {
             Engine.askNamePlayer();
-        } else if (playerChoose == 2) {
+        } else if (playerChoose.equals("2")) {
             Even.startGame(askNamePlayer());
-        } else if (playerChoose == 3) {
+        } else if (playerChoose.equals("3")) {
             Calc.startGame(askNamePlayer());
-        } else if (playerChoose == 4) {
+        } else if (playerChoose.equals("4")) {
             NOD.startGame(askNamePlayer());
-        } else if (playerChoose == 5) {
+        } else if (playerChoose.equals("5")) {
             Progression.startGame(askNamePlayer());
-        } else if (playerChoose == 6) {
+        } else if (playerChoose.equals("6")) {
             Prime.startGame(askNamePlayer());
         } else {
             System.exit(0);
         }
+
+
     }
     public static String askNamePlayer() {
         System.out.println("Welcome to the Brain Games!");

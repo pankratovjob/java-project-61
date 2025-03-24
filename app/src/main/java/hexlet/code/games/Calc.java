@@ -4,6 +4,7 @@ import java.util.Random;
 import hexlet.code.Engine;
 public class Calc {
     public static void startGame(String namePlayer) {
+        final int countRightAnswer = 3;
         final int rangeForNumber = 100; //Диапазон для рандома чисел в вопросе
         String questionText = "What is the result of the expression?";
         char[] arrChar = {'+', '-', '*'};
@@ -21,9 +22,9 @@ public class Calc {
             String playerAnswer = Engine.askPlayerStringChoose(expression);
             correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
 
-        } while (correctAnswerCount >= 0 && correctAnswerCount < Engine.attempt);
+        } while (correctAnswerCount >= 0 && correctAnswerCount < countRightAnswer);
 
-        Engine.showResultGame((correctAnswerCount >= Engine.attempt), namePlayer);
+        Engine.showResultGame((correctAnswerCount >= countRightAnswer), namePlayer);
 
     }
     private static String getRightAnswer(char oper, int numOne, int numTwo) {

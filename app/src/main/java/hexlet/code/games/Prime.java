@@ -4,6 +4,7 @@ import hexlet.code.Engine;
 import java.util.Random;
 public class Prime {
     public static void startGame(String namePlayer) {
+        final int countRightAnswer = 3;
         String questionText = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
         int correctAnswerCount = 0;
         Random randomOperand = new Random();
@@ -16,9 +17,9 @@ public class Prime {
             rightAnswer = getRightAnswer(randomNumber);
             String playerAnswer = Engine.askPlayerStringChoose(String.valueOf(randomNumber));
             correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
-        } while (correctAnswerCount >= 0 && correctAnswerCount < Engine.attempt);
+        } while (correctAnswerCount >= 0 && correctAnswerCount < countRightAnswer);
 
-        Engine.showResultGame((correctAnswerCount >= Engine.attempt), namePlayer);
+        Engine.showResultGame((correctAnswerCount >= countRightAnswer), namePlayer);
     }
 
     private static String getRightAnswer(int randomNumber) {
