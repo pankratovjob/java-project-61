@@ -17,15 +17,6 @@ class App {
         }
         String playerChoose = Engine.askPlayerChoose();
         Engine.start(playerChoose);
-/*
-        for (var game: games) {
-            if (playerChoose.equals(game[0])) {
-                var dddd = game[1];
-                dddd.startGame(Engine.askNamePlayer());
-            }
-        }
-
- */
 
     }
 }
