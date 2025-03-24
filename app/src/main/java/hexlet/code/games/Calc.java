@@ -3,8 +3,8 @@ package hexlet.code.games;
 import java.util.Random;
 import hexlet.code.Engine;
 public class Calc {
-    public static int rangeForNumber = 100; //Диапазон для рандома чисел в вопросе
     public static void startGame(String namePlayer) {
+        final int rangeForNumber = 100; //Диапазон для рандома чисел в вопросе
         String questionText = "What is the result of the expression?";
         char[] arrChar = {'+', '-', '*'};
         int correctAnswerCount = 0;

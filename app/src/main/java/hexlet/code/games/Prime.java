@@ -9,7 +9,7 @@ public class Prime {
         Random randomOperand = new Random();
         Engine.showQuestionText(questionText);
         String rightAnswer = "";
-        int rangeForNumber = 100;
+        final int rangeForNumber = 100;
 
         do {
             int randomNumber = randomOperand.nextInt(rangeForNumber);

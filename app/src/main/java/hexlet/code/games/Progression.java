@@ -10,25 +10,25 @@ public class Progression {
         int correctAnswerCount = 0;
         Random randomOperand = new Random();
         Engine.showQuestionText(questionText);
-        int[] numbers = new int[10];
-        String[] numbersString = new String[10];
-        int rangeForNumber = 9;
-        int rangeForSteps = 10;
-        int rangeForStartNumber = 100;
+        final int rangeForNumber = 9;
+        final int rangeForSteps = 10;
+        final int rangeForStartNumber = 100;
+        int[] numbers = new int[rangeForSteps];
+        //String[] numbersString = new String[rangeForSteps];
 
         do {
             int randomNumber = randomOperand.nextInt(rangeForNumber); // число маскирования
             int randomIncrement = randomOperand.nextInt(rangeForSteps);  // число шага
             numbers[0] = randomOperand.nextInt(rangeForStartNumber); // число старта
-            numbersString[0] = String.valueOf(numbers[0]);
+            //numbersString[0] = String.valueOf(numbers[0]);
 
             for (var i = 0; i < numbers.length - 1; i++) {
                 numbers[i + 1] = numbers[i] + randomIncrement;
-                numbersString[i + 1] = String.valueOf(numbers[i + 1]);
+                //numbersString[i + 1] = String.valueOf(numbers[i + 1]);
             }
 
             String rightAnswer = String.valueOf(numbers[randomNumber]);
-            numbersString[randomNumber] = "..";
+            //numbersString[randomNumber] = "..";
 
             //String expression = Arrays.toString(numbersString);
             String expression = toStringArr(numbers, randomNumber);
