@@ -14,12 +14,12 @@ public class Progression {
         String[] numbersString = new String[10];
         int rangeForNumber = 9;
         int rangeForSteps = 10;
-        int rangeForStratNumber = 100;
+        int rangeForStartNumber = 100;
 
         do {
             int randomNumber = randomOperand.nextInt(rangeForNumber); // число маскирования
             int randomIncrement = randomOperand.nextInt(rangeForSteps);  // число шага
-            numbers[0] = randomOperand.nextInt(rangeForStratNumber); // число старта
+            numbers[0] = randomOperand.nextInt(rangeForStartNumber); // число старта
             numbersString[0] = String.valueOf(numbers[0]);
 
             for (var i = 0; i < numbers.length - 1; i++) {

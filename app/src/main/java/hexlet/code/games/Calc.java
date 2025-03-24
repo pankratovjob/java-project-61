@@ -4,11 +4,12 @@ import java.util.Random;
 import hexlet.code.Engine;
 public class Calc {
     public static void startGame(String namePlayer) {
+        int rangeForNumber = 100; //Диапазон для рандома чисел в вопросе
+
         String questionText = "What is the result of the expression?";
         char[] arrChar = {'+', '-', '*'};
         int correctAnswerCount = 0;
         Random randomOperand = new Random();
-        int rangeForNumber = 100;
         Engine.showQuestionText(questionText);
 
         do {
