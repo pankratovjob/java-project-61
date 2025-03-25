@@ -17,6 +17,5 @@ class App {
         }
         String playerChoose = Engine.askPlayerChoose();
         Engine.start(playerChoose);
-
     }
 }
