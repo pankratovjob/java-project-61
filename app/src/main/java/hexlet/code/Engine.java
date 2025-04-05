@@ -3,11 +3,11 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    private static final int COUNTRIGHTANSWER = 3;
+    private static final int MAXATTEMPTS = 3;
     private static final int RANGEFORNUMBER = 100;
 
-    public static int getCountRightAnswer() {
-        return COUNTRIGHTANSWER;
+    public static int getMaxAttempts() {
+        return MAXATTEMPTS;
     }
 
     public static int getRangeForNumber() {
@@ -55,7 +55,7 @@ public class Engine {
 
     public static boolean gamePlay(String namePlayer, int correctAnswerCount) {
 
-        while (correctAnswerCount >= 0 && correctAnswerCount < getCountRightAnswer()) {
+        while (correctAnswerCount >= 0 && correctAnswerCount < getMaxAttempts()) {
             return true;
         }
 

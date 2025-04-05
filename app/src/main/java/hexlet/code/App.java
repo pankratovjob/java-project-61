@@ -66,7 +66,7 @@ class App {
             System.exit(0);
         }
 
-        Engine.showResultGame((correctAnswerCount == 3), namePlayer);
+        Engine.showResultGame((correctAnswerCount == Engine.getMaxAttempts()), namePlayer);
 
     }
 }
