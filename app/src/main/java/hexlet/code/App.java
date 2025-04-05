@@ -1,5 +1,12 @@
 package hexlet.code;
 
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+import hexlet.code.games.NOD;
+import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
+
+
 class App {
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
@@ -15,7 +22,33 @@ class App {
         for (var game: games) {
             System.out.println(game[0] + " - " + game[1]);
         }
-        String playerChoose = Engine.askPlayerChoose();
-        Engine.start(playerChoose);
+
+        Engine.askPlayerChoose();
+    }
+    public static void start(String playerChoose, int correctAnswerCount) {
+
+        String namePlayer = Engine.askNamePlayer();
+
+        if (playerChoose.equals("1")) {
+            Engine.askNamePlayer();
+        } else if (playerChoose.equals("2")) {
+            Engine.showQuestionText(Even.getQuestion());
+            do {
+                correctAnswerCount = Even.playRound(namePlayer, correctAnswerCount);
+            } while (Engine.gamePlay(namePlayer, correctAnswerCount));
+
+        } else if (playerChoose.equals("3")) {
+            Engine.showQuestionText(Calc.getQuestion());
+            Calc.startGame(Engine.askNamePlayer());
+        } else if (playerChoose.equals("4")) {
+            NOD.startGame(Engine.askNamePlayer());
+        } else if (playerChoose.equals("5")) {
+            Progression.startGame(Engine.askNamePlayer());
+        } else if (playerChoose.equals("6")) {
+            Prime.startGame(Engine.askNamePlayer());
+        } else {
+            System.exit(0);
+        }
+
     }
 }

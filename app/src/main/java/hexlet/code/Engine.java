@@ -1,40 +1,9 @@
 package hexlet.code;
 
 import java.util.Scanner;
-import hexlet.code.games.Calc;
-import hexlet.code.games.Even;
-import hexlet.code.games.NOD;
-import hexlet.code.games.Progression;
-import hexlet.code.games.Prime;
+
 public class Engine {
 
-    public static String askPlayerChoose() {
-        Scanner console = new Scanner(System.in);
-        String playerChoose = console.nextLine();
-        System.out.println("Your choice: " + playerChoose);
-        return playerChoose;
-    }
-
-    public static void start(String playerChoose) {
-
-        if (playerChoose.equals("1")) {
-            Engine.askNamePlayer();
-        } else if (playerChoose.equals("2")) {
-            Even.startGame(askNamePlayer());
-        } else if (playerChoose.equals("3")) {
-            Calc.startGame(askNamePlayer());
-        } else if (playerChoose.equals("4")) {
-            NOD.startGame(askNamePlayer());
-        } else if (playerChoose.equals("5")) {
-            Progression.startGame(askNamePlayer());
-        } else if (playerChoose.equals("6")) {
-            Prime.startGame(askNamePlayer());
-        } else {
-            System.exit(0);
-        }
-
-
-    }
     public static String askNamePlayer() {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
@@ -52,6 +21,15 @@ public class Engine {
         System.out.println("Question: " + question);
     }
 
+    public static void askPlayerChoose() {
+        int correctAnswerCount = 0;
+        Scanner console = new Scanner(System.in);
+        String playerChoose = console.nextLine();
+        System.out.println("Your choice: " + playerChoose);
+        App.start(playerChoose, correctAnswerCount);
+        //return playerChoose;
+    }
+
     public static String askPlayerStringChoose(String expression) {
         showQuestion(expression);
         Scanner console = new Scanner(System.in);
@@ -65,6 +43,19 @@ public class Engine {
             return showResultAnswer(namePlayer, false, correctAnswerCount, playerAnswer, rightAnswer);
         }
     }
+
+    public static boolean gamePlay(String namePlayer, int correctAnswerCount) {
+        final int countRightAnswer = 3;
+        final int rangeForNumber = 100;
+
+        while (correctAnswerCount >= 0 && correctAnswerCount < countRightAnswer) {
+            return true;
+        }
+
+        showResultGame((correctAnswerCount >= countRightAnswer), namePlayer);
+        return false;
+    }
+
     public static int showResultAnswer(
             String name,
             boolean result,

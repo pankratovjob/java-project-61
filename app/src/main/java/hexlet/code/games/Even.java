@@ -3,25 +3,25 @@ package hexlet.code.games;
 import java.util.Random;
 import hexlet.code.Engine;
 
+
 public class Even {
-    public static void startGame(String namePlayer) {
-        final int countRightAnswer = 3;
+
+    public static String getQuestion() {
         String questionText = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        int correctAnswerCount = 0;
+        return questionText;
+    }
+
+    public static int playRound(String namePlayer, int correctAnswerCount) {
         Random random = new Random();
+        final int countRightAnswer = 3;
         final int rangeForNumber = 100;
-        Engine.showQuestionText(questionText);
+        int randomNumber = random.nextInt(rangeForNumber);
+        String rightAnswer = (randomNumber % 2 == 0) ? "yes" : "no";
+        String playerAnswer = Engine.askPlayerStringChoose(String.valueOf(randomNumber));
 
-        do {
-            int randomNumber = random.nextInt(rangeForNumber);
-            String rightAnswer = (randomNumber % 2 == 0) ? "yes" : "no";
-            String playerAnswer = Engine.askPlayerStringChoose(String.valueOf(randomNumber));
 
-            correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
-
-        } while (correctAnswerCount >= 0 && correctAnswerCount < countRightAnswer);
-
-        Engine.showResultGame((correctAnswerCount >= countRightAnswer), namePlayer);
-
+        correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
+        Engine.gamePlay(namePlayer, correctAnswerCount);
+        return correctAnswerCount;
     }
 }

@@ -5,27 +5,22 @@ import hexlet.code.Engine;
 public class Calc {
     public static void startGame(String namePlayer) {
         final int countRightAnswer = 3;
-        final int rangeForNumber = 100; //Диапазон для рандома чисел в вопросе
-        String questionText = "What is the result of the expression?";
-        char[] arrChar = {'+', '-', '*'};
+        final int rangeForNumber = 100;
         int correctAnswerCount = 0;
         Random randomOperand = new Random();
-        Engine.showQuestionText(questionText);
 
         do {
-            int numOne = randomOperand.nextInt(rangeForNumber);
-            int numTwo = randomOperand.nextInt(rangeForNumber);
-            char oper = arrChar[randomOperand.nextInt(arrChar.length - 1)];
-
-            String rightAnswer = getRightAnswer(oper, numOne, numTwo);
-            String expression = "" + numOne + " " + oper + " " + numTwo;
-            String playerAnswer = Engine.askPlayerStringChoose(expression);
-            correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
+            correctAnswerCount = playRound(rangeForNumber, correctAnswerCount, namePlayer);
 
         } while (correctAnswerCount >= 0 && correctAnswerCount < countRightAnswer);
 
         Engine.showResultGame((correctAnswerCount >= countRightAnswer), namePlayer);
 
+    }
+
+    public static String getQuestion() {
+        String questionText = "What is the result of the expression?";
+        return questionText;
     }
     private static String getRightAnswer(char oper, int numOne, int numTwo) {
         int rightAnswer = 0;
@@ -37,6 +32,20 @@ public class Calc {
             rightAnswer = numOne + numTwo;
         }
         return String.valueOf(rightAnswer);
+    }
+
+    public static int playRound(int rangeForNumber, int correctAnswerCount, String namePlayer) {
+        Random randomOperand = new Random();
+        char[] arrChar = {'+', '-', '*'};
+        int numOne = randomOperand.nextInt(rangeForNumber);
+        int numTwo = randomOperand.nextInt(rangeForNumber);
+        char oper = arrChar[randomOperand.nextInt(arrChar.length - 1)];
+
+        String rightAnswer = getRightAnswer(oper, numOne, numTwo);
+        String expression = "" + numOne + " " + oper + " " + numTwo;
+        String playerAnswer = Engine.askPlayerStringChoose(expression);
+        correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
+        return correctAnswerCount;
     }
 
 }
