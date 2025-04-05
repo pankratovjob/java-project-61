@@ -10,10 +10,8 @@ public class Prime {
     }
 
     public static int playRound(String namePlayer, int correctAnswerCount) {
-        final int countRightAnswer = 3;
         Random randomOperand = new Random();
-        final int rangeForNumber = 100;
-        int randomNumber = randomOperand.nextInt(rangeForNumber);
+        int randomNumber = randomOperand.nextInt(Engine.getRangeForNumber());
 
         String rightAnswer = getRightAnswer(randomNumber);
         String playerAnswer = Engine.askPlayerStringChoose(String.valueOf(randomNumber));

@@ -51,7 +51,10 @@ class App {
             } while (Engine.gamePlay(namePlayer, correctAnswerCount));
 
         } else if (playerChoose.equals("5")) {
-            Progression.startGame(Engine.askNamePlayer());
+            Engine.showQuestionText(Progression.getQuestion());
+            do {
+                correctAnswerCount = Progression.playRound(namePlayer, correctAnswerCount);
+            } while (Engine.gamePlay(namePlayer, correctAnswerCount));
 
         } else if (playerChoose.equals("6")) {
             Engine.showQuestionText(Prime.getQuestion());
@@ -62,6 +65,8 @@ class App {
         } else {
             System.exit(0);
         }
+
+        Engine.showResultGame((correctAnswerCount == 3), namePlayer);
 
     }
 }

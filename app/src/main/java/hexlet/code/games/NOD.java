@@ -10,12 +10,10 @@ public class NOD {
     }
 
     public static int playRound(String namePlayer, int correctAnswerCount) {
-        final int countRightAnswer = 3;
         Random randomOperand = new Random();
-        final int rangeForNumber = 100;
 
-        int numOne = randomOperand.nextInt(rangeForNumber);
-        int numTwo = randomOperand.nextInt(rangeForNumber);
+        int numOne = randomOperand.nextInt(Engine.getRangeForNumber());
+        int numTwo = randomOperand.nextInt(Engine.getRangeForNumber());
 
         String expression = "" + numOne + " " + numTwo;
         String rightAnswer = getRightAnswer(numOne, numTwo);

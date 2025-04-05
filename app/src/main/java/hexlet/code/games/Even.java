@@ -13,9 +13,7 @@ public class Even {
 
     public static int playRound(String namePlayer, int correctAnswerCount) {
         Random random = new Random();
-        final int countRightAnswer = 3;
-        final int rangeForNumber = 100;
-        int randomNumber = random.nextInt(rangeForNumber);
+        int randomNumber = random.nextInt(Engine.getRangeForNumber());
         String rightAnswer = (randomNumber % 2 == 0) ? "yes" : "no";
         String playerAnswer = Engine.askPlayerStringChoose(String.valueOf(randomNumber));
 

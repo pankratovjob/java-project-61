@@ -22,11 +22,9 @@ public class Calc {
 
     public static int playRound(String namePlayer, int correctAnswerCount) {
         Random randomOperand = new Random();
-        final int countRightAnswer = 3;
-        final int rangeForNumber = 100;
         char[] arrChar = {'+', '-', '*'};
-        int numOne = randomOperand.nextInt(rangeForNumber);
-        int numTwo = randomOperand.nextInt(rangeForNumber);
+        int numOne = randomOperand.nextInt(Engine.getRangeForNumber());
+        int numTwo = randomOperand.nextInt(Engine.getRangeForNumber());
         char oper = arrChar[randomOperand.nextInt(arrChar.length - 1)];
 
         String rightAnswer = getRightAnswer(oper, numOne, numTwo);

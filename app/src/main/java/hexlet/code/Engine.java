@@ -3,7 +3,16 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
+    private static final int COUNTRIGHTANSWER = 3;
+    private static final int RANGEFORNUMBER = 100;
 
+    public static int getCountRightAnswer() {
+        return COUNTRIGHTANSWER;
+    }
+
+    public static int getRangeForNumber() {
+        return RANGEFORNUMBER;
+    }
     public static String askNamePlayer() {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
@@ -45,14 +54,11 @@ public class Engine {
     }
 
     public static boolean gamePlay(String namePlayer, int correctAnswerCount) {
-        final int countRightAnswer = 3;
-        final int rangeForNumber = 100;
 
-        while (correctAnswerCount >= 0 && correctAnswerCount < countRightAnswer) {
+        while (correctAnswerCount >= 0 && correctAnswerCount < getCountRightAnswer()) {
             return true;
         }
 
-        showResultGame((correctAnswerCount >= countRightAnswer), namePlayer);
         return false;
     }
 
