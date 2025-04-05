@@ -54,7 +54,10 @@ class App {
             Progression.startGame(Engine.askNamePlayer());
 
         } else if (playerChoose.equals("6")) {
-            Prime.startGame(Engine.askNamePlayer());
+            Engine.showQuestionText(Prime.getQuestion());
+            do {
+                correctAnswerCount = Prime.playRound(namePlayer, correctAnswerCount);
+            } while (Engine.gamePlay(namePlayer, correctAnswerCount));
 
         } else {
             System.exit(0);
