@@ -44,9 +44,11 @@ class App {
                 correctAnswerCount = Calc.playRound(namePlayer, correctAnswerCount);
             } while (Engine.gamePlay(namePlayer, correctAnswerCount));
 
-
         } else if (playerChoose.equals("4")) {
-            NOD.startGame(Engine.askNamePlayer());
+            Engine.showQuestionText(NOD.getQuestion());
+            do {
+                correctAnswerCount = NOD.playRound(namePlayer, correctAnswerCount);
+            } while (Engine.gamePlay(namePlayer, correctAnswerCount));
 
         } else if (playerChoose.equals("5")) {
             Progression.startGame(Engine.askNamePlayer());
