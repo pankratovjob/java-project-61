@@ -3,20 +3,6 @@ package hexlet.code.games;
 import java.util.Random;
 import hexlet.code.Engine;
 public class Calc {
-    public static void startGame(String namePlayer) {
-        final int countRightAnswer = 3;
-        final int rangeForNumber = 100;
-        int correctAnswerCount = 0;
-        Random randomOperand = new Random();
-
-        do {
-            correctAnswerCount = playRound(rangeForNumber, correctAnswerCount, namePlayer);
-
-        } while (correctAnswerCount >= 0 && correctAnswerCount < countRightAnswer);
-
-        Engine.showResultGame((correctAnswerCount >= countRightAnswer), namePlayer);
-
-    }
 
     public static String getQuestion() {
         String questionText = "What is the result of the expression?";
@@ -34,8 +20,10 @@ public class Calc {
         return String.valueOf(rightAnswer);
     }
 
-    public static int playRound(int rangeForNumber, int correctAnswerCount, String namePlayer) {
+    public static int playRound(String namePlayer, int correctAnswerCount) {
         Random randomOperand = new Random();
+        final int countRightAnswer = 3;
+        final int rangeForNumber = 100;
         char[] arrChar = {'+', '-', '*'};
         int numOne = randomOperand.nextInt(rangeForNumber);
         int numTwo = randomOperand.nextInt(rangeForNumber);
@@ -44,8 +32,11 @@ public class Calc {
         String rightAnswer = getRightAnswer(oper, numOne, numTwo);
         String expression = "" + numOne + " " + oper + " " + numTwo;
         String playerAnswer = Engine.askPlayerStringChoose(expression);
+
+        Engine.gamePlay(namePlayer, correctAnswerCount);
         correctAnswerCount = Engine.checkAnswer(namePlayer, playerAnswer, rightAnswer, correctAnswerCount);
         return correctAnswerCount;
+
     }
 
 }

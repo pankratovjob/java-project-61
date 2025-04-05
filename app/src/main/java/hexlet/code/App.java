@@ -30,7 +30,8 @@ class App {
         String namePlayer = Engine.askNamePlayer();
 
         if (playerChoose.equals("1")) {
-            Engine.askNamePlayer();
+            System.exit(0);
+
         } else if (playerChoose.equals("2")) {
             Engine.showQuestionText(Even.getQuestion());
             do {
@@ -39,13 +40,20 @@ class App {
 
         } else if (playerChoose.equals("3")) {
             Engine.showQuestionText(Calc.getQuestion());
-            Calc.startGame(Engine.askNamePlayer());
+            do {
+                correctAnswerCount = Calc.playRound(namePlayer, correctAnswerCount);
+            } while (Engine.gamePlay(namePlayer, correctAnswerCount));
+
+
         } else if (playerChoose.equals("4")) {
             NOD.startGame(Engine.askNamePlayer());
+
         } else if (playerChoose.equals("5")) {
             Progression.startGame(Engine.askNamePlayer());
+
         } else if (playerChoose.equals("6")) {
             Prime.startGame(Engine.askNamePlayer());
+
         } else {
             System.exit(0);
         }
